@@ -8,7 +8,7 @@ height, width = os.get_terminal_size().lines, os.get_terminal_size().columns
 padlen = height // 5
 y , y1 = (height // 2) + padlen // 2, (height // 2) + padlen // 2
 
-px, py, vx, vy = width // 2, rand.randint(1, height - 1), 1, 1
+px, py, vx, vy = width // 2, rand.randint(2, height - 2), 1, 1
 score1, score2 = 0, 0
 
 kb = KBHit()
@@ -34,27 +34,27 @@ while True:
         print(stre)
     time.sleep(0.1)
 
-    if py >= height - 1 or py <= 1:
+    if py >= height - 2 or py <= 1:
         vy *= -1
         px += vx
         py += vy
     else:
         px += vx
         py += vy
-    if (px == ((width // 5) + 1) and (py >= y and py <= (y + padlen))) or (px == ((width * 4 // 5) - 1) and (py >= y and py <= (y + padlen))):
+    if (px <= ((width // 5)) and (py >= y and py <= (y + padlen))) or (px >= ((width * 4 // 5)) and (py >= y1 and py <= (y1 + padlen))):
         vx *= -1
         px += vx
         py += vy
     else:
         px += vx
         py += vy
-    if px < (width // 5) - 1:
+    if px < (width // 5):
         px, py = width // 2, rand.randint(1, height - 1)
         if score2 == 10:
             print("Player 2 wins!")
             break
         score2 += 1
-    elif px > (width * 4 // 5) + 1: # or px <= (width // 5) + 1:
+    elif px > (width * 4 // 5): # or px <= (width // 5) + 1:
         px, py = width // 2, rand.randint(1, height - 1)
         if score1 == 10:
             print("Player 1 wins!")

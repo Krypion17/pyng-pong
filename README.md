@@ -1,4 +1,4 @@
-# pypong
+# pyng-pong
 obvious
 
 ## Dependencies

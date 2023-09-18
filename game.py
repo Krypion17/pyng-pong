@@ -8,6 +8,16 @@ height, width = os.get_terminal_size().lines, os.get_terminal_size().columns
 padlen = height // 5
 y , y1 = (height // 2) + padlen // 2, (height // 2) + padlen // 2
 
+title = open("./title.txt", "r").readlines()
+for i in range(height):
+    if i > 5 and i < 6 + len(title):
+        print(((width - 50) // 2)*" " + title[i - 6], end="")
+    elif i == int(height * (3 / 4)):
+        if input(((width - 20) // 2)*" " + "Press ENTER to start\n" + (" "*width + "\n")*(height - i)).strip().lower() == "q":
+            quit()
+    else:
+        print()
+
 px, py, vx, vy = width // 2, rand.randint(2, height - 2), 1, 1
 score1, score2 = 0, 0
 
